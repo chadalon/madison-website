@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Madison Ruschman — Arts & Culture Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #f7f3ee;
+    --blush: #e8d5c4;
+    --dusty-rose: #c9a99a;
+    --sage: #9aab9a;
+    --warm-brown: #5c3d2e;
+    --charcoal: #2e2a27;
+    --muted-gold: #b8955a;
+    --light-sage: #d4ddd4;
+    --sidebar-w: 260px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--charcoal);
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 32px;
+    z-index: 100;
+  }
+
+  .sidebar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-title {
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--dusty-rose);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--blush);
+    font-size: 0.82rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 0;
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--dusty-rose);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a:hover::before { width: 10px; }
+
+  .sidebar-bottom {
+    margin-top: auto;
+  }
+
+  .sidebar-contact {
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: #888;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+
+  .sidebar-contact a {
+    color: var(--dusty-rose);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .sidebar-contact a:hover { color: var(--cream); }
+
+  .sidebar-divider {
+    width: 32px;
+    height: 1px;
+    background: #444;
+    margin: 24px 0;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 72px;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: -20px;
+    right: -40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(120px, 18vw, 280px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--blush);
+    opacity: 0.45;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    animation: driftUp 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes driftUp {
+    from { transform: translateY(0px) rotate(-2deg); }
+    to   { transform: translateY(-30px) rotate(-1deg); }
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--charcoal);
+    max-width: 700px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--dusty-rose);
+  }
+
+  .hero-sub {
+    margin-top: 28px;
+    max-width: 480px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #7a6f68;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 36px;
+    border: 1px solid var(--warm-brown);
+    color: var(--warm-brown);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--warm-brown);
+    color: var(--cream);
+  }
+
+  .scroll-line {
+    position: absolute;
+    bottom: 40px;
+    left: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #aaa;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards;
+  }
+
+  .scroll-line::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #ccc;
+    animation: expandLine 1.5s ease 1.4s forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  @keyframes expandLine {
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 72px;
+  }
+
+  section:nth-child(even) {
+    background: #f0ebe4;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 40px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--dusty-rose);
+  }
+
+  /* ── WHY / MISSION ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 48px;
+  }
+
+  .why-card {
+    padding: 36px;
+    background: var(--cream);
+    border-left: 2px solid var(--blush);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .why-card:hover {
+    border-color: var(--dusty-rose);
+    transform: translateY(-4px);
+  }
+
+  .why-card-icon {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  .why-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--charcoal);
+  }
+
+  .why-card p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #7a6f68;
+  }
+
+  .why-intro {
+    max-width: 620px;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #5a5048;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-top: 16px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--blush);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 52px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dusty-rose);
+    border: 2px solid var(--cream);
+  }
+
+  .timeline-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted-gold);
+    margin-bottom: 6px;
+  }
+
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+
+  .timeline-org {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--dusty-rose);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #7a6f68;
+    max-width: 560px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .skill-group h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--blush);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skill-list li {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .skill-list li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+  }
+
+  /* ── WORK SAMPLES ── */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 16px;
+  }
+
+  .work-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--blush);
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+  }
+
+  .work-card:hover { transform: scale(0.98); }
+
+  .work-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .work-card:hover .work-card-img { transform: scale(1.04); }
+
+  .work-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(46,42,39,0.85) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+  }
+
+  .work-card:hover .work-card-overlay { opacity: 1; }
+
+  .work-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--warm-brown);
+    opacity: 0.5;
+  }
+
+  .work-card-placeholder span {
+    font-size: 2rem;
+  }
+
+  .work-card-placeholder p {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .work-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  .work-card-type {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin-top: 4px;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--blush);
+  }
+
+  .edu-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+  }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+
+  .edu-school {
+    font-size: 0.82rem;
+    color: var(--dusty-rose);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .edu-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #7a6f68;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--charcoal) !important;
+    color: var(--cream);
+  }
+
+  .contact-section .section-title {
+    color: var(--cream);
+  }
+
+  .contact-section .section-label {
+    color: var(--dusty-rose);
+  }
+
+  .contact-body {
+    max-width: 480px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #bbb;
+    margin-bottom: 40px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-link::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--dusty-rose);
+    transition: width 0.3s ease;
+  }
+
+  .contact-link:hover { color: var(--cream); }
+  .contact-link:hover::before { width: 44px; }
+
+  /* ── MOBILE ── */
+  .mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 20px; right: 20px;
+    z-index: 200;
+    background: var(--charcoal);
+    border: none;
+    color: var(--cream);
+    font-size: 1.2rem;
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 860px) {
+    .mobile-menu-btn { display: block; }
+
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.35s ease;
+    }
+
+    .sidebar.open { transform: translateX(0); }
+
+    .main { margin-left: 0; }
+
+    section { padding: 72px 32px; }
+
+    .hero { padding: 80px 32px 60px; }
+
+    .scroll-line { left: 32px; }
+
+    .why-grid { grid-template-columns: 1fr; }
+
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+
+    .work-grid { grid-template-columns: 1fr; }
+
+    .edu-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ── FADE-IN ON SCROLL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Moving progress bar */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--dusty-rose), var(--muted-gold));
+    z-index: 999;
+    transition: width 0.1s linear;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-name">Madison<br>Ruschman</div>
+  <div class="sidebar-title">Arts & Culture Professional</div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#why">Mission</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work Samples</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-contact">
+      <a href="mailto:madison@email.com">madison@email.com</a><br>
+      Raleigh–Durham, NC<br><br>
+      <a href="#">LinkedIn</a> &nbsp;·&nbsp; <a href="#">Resume</a>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-bg-text">Arts</div>
+    <div class="hero-tag">Arts Administration · Communications · Community Impact</div>
+    <h1 class="hero-headline">Where <em>story</em> meets<br>social change.</h1>
+    <p class="hero-sub">
+      I connect communities to culture — through grant-making, storytelling, 
+      donor relations, and purposeful programming rooted in equity and access.
+    </p>
+    <a href="#why" class="hero-cta">Discover My Work</a>
+    <div class="scroll-line">Scroll to explore</div>
+  </section>
+
+  <!-- WHY / MISSION -->
+  <section id="why">
+    <p class="section-label reveal">The Why</p>
+    <h2 class="section-title reveal">Nonprofits are where<br><em>purpose lives.</em></h2>
+
+    <p class="why-intro reveal">
+      [Placeholder: 2–3 sentences about Madison's personal mission — why she chose the nonprofit 
+      and arts sector, what drives her, and what she believes arts administration can do for communities. 
+      Make it warm, specific, and human.]
+    </p>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-card-icon">🎭</div>
+        <h3>Arts as Access</h3>
+        <p>[Placeholder: A brief conviction statement about arts being a vehicle for equity, belonging, 
+        or community healing. 2–3 sentences.]</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">📖</div>
+        <h3>Storytelling as Strategy</h3>
+        <p>[Placeholder: How Madison uses narrative — in donor communications, social content, 
+        or grant reporting — to make impact visible and compelling.]</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">🌱</div>
+        <h3>Community as Center</h3>
+        <p>[Placeholder: Statement about Madison's approach to centering community voice, 
+        cultural equity, or underrepresented artists in her work.]</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">📊</div>
+        <h3>Data with Heart</h3>
+        <p>[Placeholder: How Madison bridges quantitative skills — reporting, CRM, analytics — 
+        with human-centered outcomes and donor stewardship.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label reveal">Experience</p>
+    <h2 class="section-title reveal">Where I've <em>made an impact.</em></h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">[Month Year – Present]</div>
+        <div class="timeline-role">[Job Title]</div>
+        <div class="timeline-org">[Organization Name] · [City, State]</div>
+        <div class="timeline-desc">[Placeholder: 2–3 bullet-style sentences describing key accomplishments.
+        Focus on measurable outcomes — audiences reached, grants managed, campaigns launched, 
+        donor retention rates, etc.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">[Month Year – Month Year]</div>
+        <div class="timeline-role">[Job Title]</div>
+        <div class="timeline-org">[Organization Name] · [City, State]</div>
+        <div class="timeline-desc">[Placeholder: 2–3 sentences. Think: grant coordination, event logistics, 
+        newsletter management, social media growth, donor communications.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">[Month Year – Month Year]</div>
+        <div class="timeline-role">[Job Title or Internship]</div>
+        <div class="timeline-org">[Organization Name] · [City, State]</div>
+        <div class="timeline-desc">[Placeholder: Earlier role or internship. Include any arts, 
+        nonprofit, or communications experience here.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">[Month Year – Month Year]</div>
+        <div class="timeline-role">[Volunteer Role / Additional Position]</div>
+        <div class="timeline-org">[Organization Name]</div>
+        <div class="timeline-desc">[Placeholder: Optional additional role — volunteer work, 
+        student org leadership, freelance projects, etc.]</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal">Skills & Tools</p>
+    <h2 class="section-title reveal">Built for the <em>creative sector.</em></h2>
+
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <h4>Creative & Design</h4>
+        <ul class="skill-list">
+          <li>Adobe Photoshop</li>
+          <li>Adobe InDesign</li>
+          <li>Adobe Illustrator</li>
+          <li>Canva Pro</li>
+          <li>Basic Video Editing</li>
+          <li>[Add any others]</li>
+        </ul>
+      </div>
+
+      <div class="skill-group reveal">
+        <h4>Communications & Marketing</h4>
+        <ul class="skill-list">
+          <li>Email Marketing (Mailchimp / Constant Contact)</li>
+          <li>Social Media Strategy</li>
+          <li>Copywriting & Editing</li>
+          <li>Content Calendars</li>
+          <li>Analytics & Reporting</li>
+          <li>[Add any others]</li>
+        </ul>
+      </div>
+
+      <div class="skill-group reveal">
+        <h4>Nonprofit Operations</h4>
+        <ul class="skill-list">
+          <li>Salesforce CRM</li>
+          <li>Grant Administration</li>
+          <li>Donor Relations</li>
+          <li>Event Coordination</li>
+          <li>Microsoft Excel / Word</li>
+          <li>[Add any others]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SAMPLES -->
+  <section id="work">
+    <p class="section-label reveal">Demonstrated Experience</p>
+    <h2 class="section-title reveal">Work that <em>speaks for itself.</em></h2>
+
+    <div class="work-grid">
+
+      <div class="work-card reveal">
+        <div class="work-card-placeholder">
+          <span>📰</span>
+          <p>Add image / screenshot</p>
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-title">[Campaign or Project Title]</div>
+          <div class="work-card-type">Email Marketing · Nonprofit</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-card-placeholder">
+          <span>🎨</span>
+          <p>Add image / screenshot</p>
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-title">[Design or Print Collateral]</div>
+          <div class="work-card-type">Adobe InDesign · Branding</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-card-placeholder">
+          <span>📱</span>
+          <p>Add image / screenshot</p>
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-title">[Social Media Campaign]</div>
+          <div class="work-card-type">Content Strategy · Social</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-card-placeholder">
+          <span>📊</span>
+          <p>Add image / screenshot</p>
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-title">[Grant Report or Donor Impact Story]</div>
+          <div class="work-card-type">Storytelling · Data Visualization</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label reveal">Education</p>
+    <h2 class="section-title reveal">Trained at the <em>best.</em></h2>
+
+    <div class="edu-block">
+      <div class="edu-item reveal">
+        <div class="edu-year">[Year]</div>
+        <div>
+          <div class="edu-degree">[Degree, e.g. B.A. in Arts Administration]</div>
+          <div class="edu-school">[University Name — note: highly regarded arts admin program]</div>
+          <div class="edu-desc">[Placeholder: Relevant coursework, honors, thesis, activities, 
+          student leadership, or relevant capstone projects. 2–3 sentences.]</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">[Year]</div>
+        <div>
+          <div class="edu-degree">[Certification, Minor, or Additional Training]</div>
+          <div class="edu-school">[Issuing Institution or Platform]</div>
+          <div class="edu-desc">[Placeholder: e.g., Salesforce certification, grant writing 
+          workshop, DEI training, Adobe certification, etc.]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <p class="section-label">Let's Connect</p>
+    <h2 class="section-title">Ready to build<br><em>something meaningful.</em></h2>
+    <p class="contact-body">
+      Whether you're looking for a collaborator, a communicator, or a connector — 
+      I'd love to hear about what you're building. Let's talk.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:madison@email.com" class="contact-link">madison@email.com</a>
+      <a href="#" class="contact-link">LinkedIn Profile</a>
+      <a href="#" class="contact-link">Download Résumé</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('progressBar').style.width = progress + '%';
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const sidebar = document.getElementById('sidebar');
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    menuBtn.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+  });
+
+  // Close sidebar on nav click (mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      menuBtn.textContent = '☰';
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .timeline-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // Staggered timeline
+  document.querySelectorAll('.timeline-item').forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+</body>
+</html>
