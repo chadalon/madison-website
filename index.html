@@ -549,6 +549,215 @@
         flex-shrink: 0;
       }
 
+      /* ── STORY ── */
+      .story-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 64px;
+        align-items: start;
+        margin-top: 16px;
+      }
+
+      .story-text p {
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.9;
+        color: #5a5048;
+        margin-bottom: 20px;
+      }
+
+      .story-text em {
+        font-style: italic;
+        color: var(--dusty-rose);
+      }
+
+      .story-pull {
+        background: var(--charcoal);
+        padding: 40px 36px;
+        position: sticky;
+        top: 40px;
+      }
+
+      .story-pull blockquote {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.45rem;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--cream);
+        line-height: 1.4;
+        border: none;
+        margin: 0 0 20px 0;
+        padding: 0;
+      }
+
+      .story-pull-attr {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dusty-rose);
+      }
+
+      @media (max-width: 860px) {
+        .story-layout {
+          grid-template-columns: 1fr;
+        }
+        .story-pull {
+          position: static;
+        }
+      }
+
+      /* ── FEATURED WORK CARD ── */
+      .work-featured {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 40px;
+        background: var(--charcoal);
+        margin-top: 16px;
+        overflow: hidden;
+      }
+
+      .work-featured-content {
+        padding: 48px;
+      }
+
+      .work-featured-tag {
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted-gold);
+        margin-bottom: 16px;
+      }
+
+      .work-featured-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: var(--cream);
+        margin-bottom: 6px;
+        line-height: 1.1;
+      }
+
+      .work-featured-sub {
+        font-size: 0.8rem;
+        color: var(--dusty-rose);
+        letter-spacing: 0.06em;
+        margin-bottom: 20px;
+      }
+
+      .work-featured-desc {
+        font-size: 0.88rem;
+        font-weight: 300;
+        line-height: 1.8;
+        color: #bbb;
+        margin-bottom: 24px;
+      }
+
+      .work-featured-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+
+      .work-featured-tags span {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border: 1px solid #444;
+        color: #aaa;
+      }
+
+      .work-featured-cta {
+        display: inline-block;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dusty-rose);
+        text-decoration: none;
+        border-bottom: 1px solid var(--dusty-rose);
+        padding-bottom: 3px;
+        transition:
+          color 0.3s,
+          border-color 0.3s;
+      }
+
+      .work-featured-cta:hover {
+        color: var(--cream);
+        border-color: var(--cream);
+      }
+
+      .work-featured-preview {
+        background: #1a1714;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .work-featured-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        color: #555;
+        text-align: center;
+        padding: 32px;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      /* ── PORTFOLIO LINK ── */
+      .work-portfolio-link {
+        margin-top: 48px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .work-portfolio-cta {
+        display: inline-block;
+        padding: 14px 36px;
+        border: 1px solid var(--warm-brown);
+        color: var(--warm-brown);
+        font-size: 0.78rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
+
+      .work-portfolio-cta:hover {
+        background: var(--warm-brown);
+        color: var(--cream);
+      }
+
+      .work-portfolio-link p {
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: #9a8f88;
+      }
+
+      @media (max-width: 860px) {
+        .work-featured {
+          grid-template-columns: 1fr;
+        }
+        .work-featured-preview {
+          display: none;
+        }
+        .work-featured-content {
+          padding: 32px;
+        }
+        .work-portfolio-link {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+
       /* ── WORK SAMPLES ── */
       .work-grid {
         display: grid;
@@ -849,6 +1058,7 @@
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#why">Mission</a></li>
+          <li><a href="#story">My Story</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#work">Work Samples</a></li>
@@ -944,6 +1154,46 @@
               understand the importance of data and its impact on an
               organization's next steps.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORY -->
+      <section id="story">
+        <p class="section-label reveal">My Story</p>
+        <h2 class="section-title reveal">
+          Why I chose<br /><em>this work.</em>
+        </h2>
+
+        <div class="story-layout reveal">
+          <div class="story-text">
+            <p>
+              I grew up as the daughter of a single mother. I know what it means
+              to navigate the world without a full safety net - and I know what
+              it means to find refuge in creative expression when other doors
+              feel closed.
+            </p>
+            <p>
+              When I discovered Arts Administration in college, I didn't just
+              find a career path. I found a framework for everything I already
+              believed: that the arts build community, that storytelling creates
+              empathy, and that the people most underserved by our systems are
+              often the ones with the most powerful stories to tell.
+            </p>
+            <p>
+              That belief led me to finding what was missing in the arts, which
+              brought along my mock art nonprofit <em>Ability to Say</em>, and
+              led me to pursue grant-funded research on why this identity is so
+              absent from our cultural institutions. I want to spend my career
+              making sure arts organizations are reaching the people who need
+              them most.
+            </p>
+          </div>
+          <div class="story-pull">
+            <blockquote>
+              "Getting voices heard is the best way to push change."
+            </blockquote>
+            <div class="story-pull-attr">— Madison Ruschman</div>
           </div>
         </div>
       </section>
@@ -1073,54 +1323,108 @@
           Work that <em>speaks for itself.</em>
         </h2>
 
-        <div class="work-grid">
+        <!-- FEATURED: Ability to Say -->
+        <div class="work-featured reveal">
+          <div class="work-featured-content">
+            <div class="work-featured-tag">Featured Project</div>
+            <h3 class="work-featured-title">Ability to Say</h3>
+            <p class="work-featured-sub">
+              Mock Nonprofit Organization - Founder & Designer
+            </p>
+            <p class="work-featured-desc">
+              A fully realized nonprofit concept dedicated to showcasing
+              single-parent family experiences through art. Madison conceived
+              the mission, designed the brand identity and logo, wrote all
+              donor-facing copy, structured programming, and produced a complete
+              12-page Case for Support document - demonstrating the full range
+              of nonprofit communications, development, and design skills in a
+              single project.
+            </p>
+            <div class="work-featured-tags">
+              <span>Nonprofit Development</span>
+              <span>Brand Identity</span>
+              <span>Donor Communications</span>
+              <span>Adobe Suite</span>
+              <span>Grant Writing</span>
+            </div>
+            <a
+              href="Ability_to_Say_Case_for_Support.pdf"
+              target="_blank"
+              class="work-featured-cta"
+              >View Case for Support →</a
+            >
+          </div>
+          <div class="work-featured-preview">
+            <div class="work-featured-placeholder">
+              <span style="font-size: 3rem">🏛️</span>
+              <p>Ability to Say</p>
+              <p style="font-size: 0.7rem; opacity: 0.6">
+                Case for Support Document
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-grid" style="margin-top: 40px">
           <div class="work-card reveal">
             <div class="work-card-placeholder">
-              <span>📰</span>
-              <p>Add image / screenshot</p>
+              <span>📄</span>
+              <p>Add image / scan</p>
             </div>
             <div class="work-card-overlay">
-              <div class="work-card-title">[Campaign or Project Title]</div>
-              <div class="work-card-type">Email Marketing · Nonprofit</div>
+              <div class="work-card-title">Forestry Seminar Pamphlet</div>
+              <div class="work-card-type">Print Design · Adobe Suite</div>
             </div>
           </div>
 
           <div class="work-card reveal">
             <div class="work-card-placeholder">
-              <span>🎨</span>
-              <p>Add image / screenshot</p>
-            </div>
-            <div class="work-card-overlay">
-              <div class="work-card-title">[Design or Print Collateral]</div>
-              <div class="work-card-type">Adobe InDesign · Branding</div>
-            </div>
-          </div>
-
-          <div class="work-card reveal">
-            <div class="work-card-placeholder">
-              <span>📱</span>
-              <p>Add image / screenshot</p>
-            </div>
-            <div class="work-card-overlay">
-              <div class="work-card-title">[Social Media Campaign]</div>
-              <div class="work-card-type">Content Strategy · Social</div>
-            </div>
-          </div>
-
-          <div class="work-card reveal">
-            <div class="work-card-placeholder">
-              <span>📊</span>
+              <span>🌿</span>
               <p>Add image / screenshot</p>
             </div>
             <div class="work-card-overlay">
               <div class="work-card-title">
-                [Grant Report or Donor Impact Story]
+                Invasive Plants Children's Graphics
               </div>
+              <div class="work-card-type">Illustration · Education · Canva</div>
+            </div>
+          </div>
+
+          <div class="work-card reveal">
+            <div class="work-card-placeholder">
+              <span>🔬</span>
+              <p>Add project abstract or page</p>
+            </div>
+            <div class="work-card-overlay">
+              <div class="work-card-title">
+                Single-Parent Families in the Arts
+              </div>
+              <div class="work-card-type">Grant Research · Equity & Access</div>
+            </div>
+          </div>
+
+          <div class="work-card reveal">
+            <div class="work-card-placeholder">
+              <span>✦</span>
+              <p>Add logo samples</p>
+            </div>
+            <div class="work-card-overlay">
+              <div class="work-card-title">Freelance Brand & Logo Work</div>
               <div class="work-card-type">
-                Storytelling · Data Visualization
+                Adobe Illustrator · Brand Identity
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="work-portfolio-link reveal">
+          <a href="portfolio.html" class="work-portfolio-cta"
+            >View Full Portfolio →</a
+          >
+          <p>
+            20+ additional work samples across design, communications, and
+            research
+          </p>
         </div>
       </section>
 
