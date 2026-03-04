@@ -741,7 +741,7 @@
         color: #9a8f88;
       }
 
-      @media (max-width: 860px) {
+      @media (max-width: 1330px) {
         .work-featured {
           grid-template-columns: 1fr;
         }
@@ -769,7 +769,7 @@
       .work-card {
         position: relative;
         overflow: hidden;
-        background: var(--blush);
+        background-color: #fff;
         aspect-ratio: 4/3;
         cursor: pointer;
         transition: transform 0.4s ease;
@@ -1363,36 +1363,46 @@
             >
           </div>
           <div class="work-featured-preview">
-            <div class="work-featured-placeholder">
+            <img
+              class="work-card-img"
+              src="./images/ats_thumbnail.png"
+              alt="Case for support thumbnail"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              "
+            />
+            <!-- <div class="work-featured-placeholder">
               <span style="font-size: 3rem">🏛️</span>
               <p>Ability to Say</p>
               <p style="font-size: 0.7rem; opacity: 0.6">
                 Case for Support Document
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <div class="work-grid" style="margin-top: 40px">
           <div class="work-card reveal">
-            <div class="work-card-placeholder">
-              <span>📄</span>
-              <p>Add image / scan</p>
-            </div>
+            <img
+              class="work-card-img"
+              src="./images/bk_thumbnail.png"
+              alt="Brand kit thumbnail"
+            />
             <div class="work-card-overlay">
-              <div class="work-card-title">Forestry Seminar Pamphlet</div>
-              <div class="work-card-type">Print Design · Adobe Suite</div>
+              <div class="work-card-title">Riverpark Center Brand Kit</div>
+              <div class="work-card-type">Branding · Strategic Planning</div>
             </div>
           </div>
 
           <div class="work-card reveal">
-            <div class="work-card-placeholder">
-              <img
-                class="work-card-img"
-                src="./bh_thumbnail.png"
-                alt="Bush Honeysuckle Graphic"
-              />
-            </div>
+            <img
+              class="work-card-img"
+              src="./images/bh_thumbnail.png"
+              alt="Bush honeysuckle thumbnail"
+            />
             <div class="work-card-overlay">
               <div class="work-card-title">
                 Invasive Plants Children's Graphics
@@ -1404,10 +1414,11 @@
           </div>
 
           <div class="work-card reveal">
-            <div class="work-card-placeholder">
-              <span>🔬</span>
-              <p>Add project abstract or page</p>
-            </div>
+            <img
+              class="work-card-img"
+              src="./images/gra_thumbnail.png"
+              alt="Grant research app thumbnail"
+            />
             <div class="work-card-overlay">
               <div class="work-card-title">
                 Single-Parent Families in the Arts
@@ -1417,10 +1428,11 @@
           </div>
 
           <div class="work-card reveal">
-            <div class="work-card-placeholder">
-              <span>✦</span>
-              <p>Add logo samples</p>
-            </div>
+            <img
+              class="work-card-img"
+              src="./images/lc_thumbnail.png"
+              alt="Logo comission thumbnail"
+            />
             <div class="work-card-overlay">
               <div class="work-card-title">Freelance Brand & Logo Work</div>
               <div class="work-card-type">
