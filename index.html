@@ -238,6 +238,15 @@
         animation: driftUp 14s ease-in-out infinite alternate;
       }
 
+      .hero-star {
+        position: absolute;
+        right: 1%;
+        z-index: 5;
+        width: 25%;
+        min-width: 300px;
+        animation: driftUp 14s ease-in-out infinite alternate;
+      }
+
       @keyframes driftUp {
         from {
           transform: translateY(0px) rotate(-2deg);
@@ -316,7 +325,7 @@
         font-size: 0.68rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: #aaa;
+        color: #7a6f68;
         opacity: 0;
         animation: fadeUp 1s ease 1.2s forwards;
       }
@@ -326,7 +335,7 @@
         display: block;
         width: 40px;
         height: 1px;
-        background: #ccc;
+        background: #7a6f68;
         animation: expandLine 1.5s ease 1.4s forwards;
         transform-origin: left;
         transform: scaleX(0);
@@ -997,7 +1006,7 @@
         }
 
         .hero {
-          padding: 80px 32px 60px;
+          padding: 80px 32px 80px;
         }
 
         .scroll-line {
@@ -1019,6 +1028,10 @@
         .edu-item {
           grid-template-columns: 1fr;
           gap: 8px;
+        }
+
+        .hero-star {
+          right: auto;
         }
       }
 
@@ -1089,9 +1102,12 @@
 
     <!-- MAIN CONTENT -->
     <main class="main">
+      <svg class="hero-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <path d="M16 4 L18.2 13.8 L28 16 L18.2 18.2 L16 28 L13.8 18.2 L4 16 L13.8 13.8 Z" fill="#e8d5c4"/>
+      </svg>
       <!-- HERO -->
       <section class="hero" id="about">
-        <div class="hero-bg-text">Arts</div>
+        <!-- <div class="hero-bg-text">Arts</div> -->
         <div class="hero-tag">
           Arts Administration · Communications · Community Impact
         </div>
@@ -1102,7 +1118,7 @@
           I connect organizations to communities - through grant research,
           creative communications, and storytelling rooted in equity and access.
         </p>
-        <a href="#why" class="hero-cta">Discover My Work</a>
+        <a href="portfolio.html" class="hero-cta">View my Portfolio &rarr;</a>
         <div class="scroll-line">Scroll to explore</div>
       </section>
 
