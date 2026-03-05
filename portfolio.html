@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Madison Ruschman</title>
+    <meta
+      name="description"
+      content="Full portfolio of Madison Ruschman — arts administration, nonprofit communications, brand design, illustration, and grant research."
+    />
+
+    <!-- Favicons (matching main site) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232e2a27'/%3E%3Cpath d='M16 4 L18.2 13.8 L28 16 L18.2 18.2 L16 28 L13.8 18.2 L4 16 L13.8 13.8 Z' fill='%23c9a99a'/%3E%3C/svg%3E"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%232e2a27'/%3E%3Cpath d='M90 18 L103 77 L162 90 L103 103 L90 162 L77 103 L18 90 L77 77 Z' fill='%23c9a99a'/%3E%3C/svg%3E"
+    />
+    <meta name="theme-color" content="#2e2a27" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --cream: #f7f3ee;
+        --blush: #e8d5c4;
+        --dusty-rose: #c9a99a;
+        --sage: #9aab9a;
+        --warm-brown: #5c3d2e;
+        --charcoal: #2e2a27;
+        --muted-gold: #b8955a;
+        --light-sage: #d4ddd4;
+        --sidebar-w: 260px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--charcoal);
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* ── PROGRESS BAR ── */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          var(--dusty-rose),
+          var(--muted-gold)
+        );
+        z-index: 999;
+        transition: width 0.1s linear;
+      }
+
+      /* ── SIDEBAR ── */
+      .sidebar {
+        width: var(--sidebar-w);
+        min-height: 100vh;
+        background: var(--charcoal);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 48px 32px;
+        z-index: 100;
+      }
+
+      .sidebar-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.55rem;
+        font-weight: 300;
+        color: var(--cream);
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        margin-bottom: 8px;
+        text-decoration: none;
+      }
+
+      .sidebar-title {
+        font-size: 0.72rem;
+        font-weight: 300;
+        color: var(--dusty-rose);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 48px;
+      }
+
+      .back-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #888;
+        text-decoration: none;
+        margin-bottom: 32px;
+        transition: color 0.3s;
+      }
+
+      .back-link::before {
+        content: "←";
+        font-size: 0.9rem;
+        transition: transform 0.3s;
+      }
+
+      .back-link:hover {
+        color: var(--cream);
+      }
+      .back-link:hover::before {
+        transform: translateX(-4px);
+      }
+
+      .sidebar-divider {
+        width: 32px;
+        height: 1px;
+        background: #444;
+        margin: 8px 0 24px;
+      }
+
+      .filter-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #555;
+        margin-bottom: 12px;
+      }
+
+      .filter-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .filter-list button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--blush);
+        padding: 8px 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: color 0.3s;
+        width: 100%;
+        position: relative;
+      }
+
+      .filter-list button::before {
+        content: "";
+        width: 0;
+        height: 1px;
+        background: var(--dusty-rose);
+        transition: width 0.3s;
+        flex-shrink: 0;
+      }
+
+      .filter-list button:hover,
+      .filter-list button.active {
+        color: var(--cream);
+      }
+
+      .filter-list button.active::before {
+        width: 10px;
+      }
+
+      .sidebar-bottom {
+        margin-top: auto;
+      }
+
+      .sidebar-contact {
+        font-size: 0.72rem;
+        font-weight: 300;
+        color: #888;
+        letter-spacing: 0.05em;
+        line-height: 1.8;
+      }
+
+      .sidebar-contact a {
+        color: var(--dusty-rose);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .sidebar-contact a:hover {
+        color: var(--cream);
+      }
+
+      /* ── MOBILE MENU ── */
+      .mobile-menu-btn {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 200;
+        background: var(--charcoal);
+        border: none;
+        color: var(--cream);
+        font-size: 1.2rem;
+        padding: 10px 14px;
+        cursor: pointer;
+      }
+
+      /* ── MAIN ── */
+      .main {
+        margin-left: var(--sidebar-w);
+        flex: 1;
+        padding: 72px;
+      }
+
+      /* ── PAGE HEADER ── */
+      .page-header {
+        margin-bottom: 64px;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.1s forwards;
+      }
+
+      .page-header-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--dusty-rose);
+        margin-bottom: 16px;
+      }
+
+      .page-header h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(40px, 5vw, 72px);
+        font-weight: 300;
+        line-height: 1.05;
+        color: var(--charcoal);
+      }
+
+      .page-header h1 em {
+        font-style: italic;
+        color: var(--dusty-rose);
+      }
+
+      .page-header-sub {
+        margin-top: 16px;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #9a8f88;
+        max-width: 480px;
+        line-height: 1.7;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── CATEGORY SECTIONS ── */
+      .category-section {
+        margin-bottom: 80px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .category-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .category-header {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        margin-bottom: 28px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--blush);
+      }
+
+      .category-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: var(--charcoal);
+      }
+
+      .category-count {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--dusty-rose);
+      }
+
+      /* ── MAGAZINE GRID ── */
+      .mag-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      /* Featured: 1 large left, 2 stacked right */
+      .mag-grid.layout-featured {
+        grid-template-columns: 1.6fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .mag-grid.layout-featured .card:first-child {
+        grid-row: 1 / 3;
+      }
+
+      /* Three across */
+      .mag-grid.layout-trio {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      /* Two across with different weights */
+      .mag-grid.layout-duo {
+        grid-template-columns: 1.2fr 1fr;
+      }
+
+      /* Four: 2 wide top, 2 normal bottom */
+      .mag-grid.layout-quad {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mag-grid.layout-quad .card:first-child {
+        grid-column: 1 / 2;
+      }
+
+      /* Wide single */
+      .mag-grid.layout-single {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+
+      /* Five: hero + 4 small */
+      .mag-grid.layout-five {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .mag-grid.layout-five .card:first-child {
+        grid-row: 1 / 3;
+      }
+
+      /* ── PORTFOLIO CARD ── */
+      .card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        background: var(--blush);
+        transition: transform 0.4s ease;
+      }
+
+      .card:hover {
+        transform: scale(0.985);
+      }
+
+      .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+        min-height: 180px;
+        background-color: #fff;
+      }
+
+      .card:hover img {
+        transform: scale(1.04);
+      }
+
+      .card-placeholder {
+        width: 100%;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--blush);
+        color: var(--warm-brown);
+        opacity: 0.5;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .card-placeholder .icon {
+        font-size: 2rem;
+      }
+
+      .card-placeholder .filename {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        line-height: 1.4;
+      }
+
+      .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(46, 42, 39, 0.88) 0%,
+          transparent 55%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 24px;
+      }
+
+      .card:hover .card-overlay {
+        opacity: 1;
+      }
+
+      .card-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.15rem;
+        font-weight: 300;
+        color: var(--cream);
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+
+      .card-type {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dusty-rose);
+      }
+
+      .card-zoom {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+        background: rgba(46, 42, 39, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cream);
+        font-size: 0.7rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .card:hover .card-zoom {
+        opacity: 1;
+      }
+
+      /* ── LIGHTBOX ── */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 17, 15, 0.96);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .lightbox-inner {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+        max-width: 1100px;
+        width: 90%;
+        padding: 48px;
+      }
+
+      .lightbox-img-wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 80vh;
+        background-color: #fff;
+      }
+
+      .lightbox-img-wrap img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        display: block;
+      }
+
+      .lightbox-img-placeholder {
+        width: 400px;
+        height: 300px;
+        background: #1a1714;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #444;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .lightbox-info {
+        width: 260px;
+        flex-shrink: 0;
+      }
+
+      .lightbox-category {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dusty-rose);
+        margin-bottom: 12px;
+      }
+
+      .lightbox-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        font-weight: 300;
+        color: var(--cream);
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+
+      .lightbox-desc {
+        font-size: 0.85rem;
+        font-weight: 300;
+        line-height: 1.75;
+        color: #aaa;
+        margin-bottom: 24px;
+      }
+
+      .lightbox-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 28px;
+      }
+
+      .lightbox-tools span {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border: 1px solid #444;
+        color: #888;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 32px;
+        right: 40px;
+        background: none;
+        border: none;
+        color: #888;
+        font-size: 1.4rem;
+        cursor: pointer;
+        transition: color 0.3s;
+        line-height: 1;
+      }
+
+      .lightbox-close:hover {
+        color: var(--cream);
+      }
+
+      .lightbox-nav {
+        display: flex;
+        gap: 12px;
+      }
+
+      .lightbox-nav button {
+        background: none;
+        border: 1px solid #444;
+        color: #888;
+        font-size: 0.8rem;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: all 0.3s;
+      }
+
+      .lightbox-nav button:hover {
+        border-color: var(--dusty-rose);
+        color: var(--cream);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+        .sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.35s ease;
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+        .main {
+          margin-left: 0;
+          padding: 48px 24px;
+        }
+
+        .mag-grid.layout-featured,
+        .mag-grid.layout-five {
+          grid-template-columns: 1fr 1fr;
+        }
+        .mag-grid.layout-featured .card:first-child,
+        .mag-grid.layout-five .card:first-child {
+          grid-row: auto;
+        }
+        .mag-grid.layout-trio {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .lightbox-inner {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .lightbox-info {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .mag-grid.layout-featured,
+        .mag-grid.layout-five,
+        .mag-grid.layout-trio,
+        .mag-grid.layout-duo,
+        .mag-grid.layout-quad {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-name">Madison<br />Ruschman</a>
+      <div class="sidebar-title">Portfolio</div>
+
+      <a href="index.html" class="back-link">Back to Main Site</a>
+
+      <div class="sidebar-divider"></div>
+
+      <p class="filter-label">Filter by</p>
+      <ul class="filter-list">
+        <li><button class="active" data-filter="all">All Work</button></li>
+        <li><button data-filter="nonprofit">Nonprofit & Brand</button></li>
+        <li><button data-filter="print">Print & Editorial</button></li>
+        <li><button data-filter="illustration">Illustration</button></li>
+        <li><button data-filter="social">Social & Digital</button></li>
+        <li><button data-filter="research">Research</button></li>
+      </ul>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-contact">
+          <a href="mailto:madison@email.com">madison@email.com</a><br /><br />
+          <a href="index.html">← Main Site</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <p class="page-header-label">Selected Works</p>
+        <h1>A body of work built on<br /><em>purpose & craft.</em></h1>
+        <p class="page-header-sub">
+          Across nonprofit communications, brand design, editorial illustration,
+          and research — every piece here was made with a community in mind.
+        </p>
+      </div>
+
+      <!-- ── CATEGORY: NONPROFIT & BRAND ── -->
+      <div
+        class="category-section"
+        id="cat-nonprofit"
+        data-category="nonprofit"
+      >
+        <div class="category-header">
+          <h2 class="category-title">Nonprofit & Brand</h2>
+          <span class="category-count">4 pieces</span>
+        </div>
+
+        <!-- LAYOUT: Featured — large left, 2 stacked right -->
+        <div class="mag-grid layout-featured">
+          <!-- HERO: Ability to Say -->
+          <div class="card" data-index="0">
+            <img
+              src="images/ats_thumbnail.png"
+              alt="Ability to Say thumbnail"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Ability to Say — Case for Support</div>
+              <div class="card-type">
+                Nonprofit Founding · Brand Identity · Donor Communications
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="1">
+            <img
+              src="images/brand_kit_riverpark_center.png"
+              alt="riverpark center brand kit"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Brand Kit — Riverpark Center</div>
+              <div class="card-type">Brand Design · Adobe Illustrator</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="2">
+            <img
+              src="images/g_cobb_logo_commission.png"
+              alt="g cobb logo commission"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Logo Commission — G. Cobb</div>
+              <div class="card-type">
+                Freelance · Adobe Illustrator · Brand Identity
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CATEGORY: PRINT & EDITORIAL ── -->
+      <div class="category-section" id="cat-print" data-category="print">
+        <div class="category-header">
+          <h2 class="category-title">Print & Editorial</h2>
+          <span class="category-count">6 pieces</span>
+        </div>
+
+        <!-- LAYOUT: Five — hero + 4 -->
+        <div class="mag-grid layout-five">
+          <div class="card" data-index="3">
+            <img
+              src="images/kwoa_newsletter_cover.png"
+              alt="kwoa newsletter cover"
+            />
+            <div class="card-overlay">
+              <div class="card-title">KWOA Newsletter — Fall 2024</div>
+              <div class="card-type">Newsletter Design · Editorial · Print</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="4">
+            <img src="images/eblast.png" alt="eblast design" />
+            <div class="card-overlay">
+              <div class="card-title">E-Blast Design</div>
+              <div class="card-type">Email Marketing · Digital Design</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="5">
+            <img src="images/wind_product.jpg" alt="wind product" />
+            <div class="card-overlay">
+              <div class="card-title">Print Collateral</div>
+              <div class="card-type">Print Design · Adobe InDesign</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="6">
+            <img src="images/wind_logo.jpg" alt="wind logo" />
+            <div class="card-overlay">
+              <div class="card-title">Print Collateral II</div>
+              <div class="card-type">Print Design · Adobe InDesign</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="7">
+            <img src="images/two_infographic.png" alt="two infographic" />
+            <div class="card-overlay">
+              <div class="card-title">New Housing Starts — Infographic</div>
+              <div class="card-type">
+                Data Visualization · Infographic Design
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CATEGORY: FORESTRY & COMMUNICATIONS ── -->
+      <div class="category-section" id="cat-social" data-category="social">
+        <div class="category-header">
+          <h2 class="category-title">Social & Digital</h2>
+          <span class="category-count">8 pieces</span>
+        </div>
+
+        <!-- LAYOUT: Quad top row, trio bottom -->
+        <div class="mag-grid layout-quad" style="margin-bottom: 16px">
+          <div class="card" data-index="8">
+            <img src="images/forestry101_1.png" alt="forestry101 thumbnail 1" />
+            <div class="card-overlay">
+              <div class="card-title">Forestry 101 — Thumbnail Series I</div>
+              <div class="card-type">
+                YouTube · Multimedia Marketing · Canva
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="9">
+            <img src="images/forestry101_3.png" alt="forestry101 thumbnail 3" />
+            <div class="card-overlay">
+              <div class="card-title">Forestry 101 — Thumbnail Series II</div>
+              <div class="card-type">
+                YouTube · Multimedia Marketing · Canva
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="10">
+            <img src="images/forestry101_4.png" alt="forestry101 thumbnail 4" />
+            <div class="card-overlay">
+              <div class="card-title">Forestry 101 — Thumbnail Series III</div>
+              <div class="card-type">
+                YouTube · Multimedia Marketing · Canva
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="11">
+            <img src="images/forestry101_6.png" alt="forestry101 thumbnail 6" />
+            <div class="card-overlay">
+              <div class="card-title">Forestry 101 — Thumbnail Series IV</div>
+              <div class="card-type">
+                YouTube · Multimedia Marketing · Canva
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+
+        <div class="mag-grid layout-trio">
+          <div class="card" data-index="12">
+            <img
+              src="images/yt_water_content_1.png"
+              alt="Youtube water content thumbnail"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Water Content — YouTube I</div>
+              <div class="card-type">YouTube Thumbnail · Digital Design</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="13">
+            <img
+              src="images/yt_water_content_2.png"
+              alt="Youtube water content thumbnail"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Water Content — YouTube II</div>
+              <div class="card-type">YouTube Thumbnail · Digital Design</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="14">
+            <img
+              src="images/yt_water_content_6.png"
+              alt="Youtube water content thumbnail"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Water Content — YouTube III</div>
+              <div class="card-type">YouTube Thumbnail · Digital Design</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CATEGORY: ILLUSTRATION ── -->
+      <div
+        class="category-section"
+        id="cat-illustration"
+        data-category="illustration"
+      >
+        <div class="category-header">
+          <h2 class="category-title">Illustration & Graphics</h2>
+          <span class="category-count">4 pieces</span>
+        </div>
+
+        <div class="mag-grid layout-featured">
+          <div class="card" data-index="15">
+            <img src="images/invasive_plant.svg" alt="Invasive plant graphic" />
+            <div class="card-overlay">
+              <div class="card-title">
+                Invasive Plants — Children's Education
+              </div>
+              <div class="card-type">
+                Illustration · Adobe Illustrator · Education
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="16">
+            <img
+              src="images/bradford_pear_tree.png"
+              alt="Bradford pear tree graphic"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Bradford Pear Tree Character</div>
+              <div class="card-type">
+                Character Design · Education · Adobe Illustrator
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="17">
+            <img src="images/kudzu.png" alt="Kudzu graphic" />
+            <div class="card-overlay">
+              <div class="card-title">Kudzu — Invasive Species Graphic</div>
+              <div class="card-type">
+                Illustration · Education · Adobe Illustrator
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="18">
+            <img
+              src="images/bush_honeysuckle.png"
+              alt="Bush honeysuckle graphic"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Bush Honeysuckle — Invasive Species</div>
+              <div class="card-type">
+                Illustration · Education · Adobe Illustrator
+              </div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CATEGORY: SOCIAL/HOLIDAY ── -->
+      <div class="category-section" id="cat-holiday" data-category="social">
+        <div class="category-header">
+          <h2 class="category-title">Social Content</h2>
+          <span class="category-count">2 pieces</span>
+        </div>
+
+        <div class="mag-grid layout-duo">
+          <div class="card" data-index="19">
+            <img src="images/holiday_posts_1.png" alt="Earth month graphic" />
+            <div class="card-overlay">
+              <div class="card-title">Earth Month Social Post I</div>
+              <div class="card-type">Social Media · Canva · Content Design</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="20">
+            <img src="images/holiday_posts_2.png" alt="Earth month graphic" />
+            <div class="card-overlay">
+              <div class="card-title">Earth Month Social Post II</div>
+              <div class="card-type">Social Media · Canva · Content Design</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CATEGORY: RESEARCH ── -->
+      <div class="category-section" id="cat-research" data-category="research">
+        <div class="category-header">
+          <h2 class="category-title">Research & Data</h2>
+          <span class="category-count">3 pieces</span>
+        </div>
+
+        <div class="mag-grid layout-trio">
+          <div class="card" data-index="21">
+            <img
+              src="images/tcs_timeline.png"
+              alt="The Cher Show event timeline"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Research Timeline</div>
+              <div class="card-type">Data Design · Research Visualization</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="22">
+            <img
+              src="images/tcs_condensed_timeline.png"
+              alt="The Cher Show condensed event timeline"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Condensed Research Timeline</div>
+              <div class="card-type">Data Design · Research Visualization</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+
+          <div class="card" data-index="23">
+            <img
+              src="images/gra_thumbnail.png"
+              alt="Grant Research App thumbnail"
+            />
+            <div class="card-overlay">
+              <div class="card-title">Grant Research Application</div>
+              <div class="card-type">Grant Writing · Nonprofit Research</div>
+            </div>
+            <div class="card-zoom">⤢</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <div class="lightbox-inner">
+        <div class="lightbox-img-wrap" id="lightboxImgWrap">
+          <div class="lightbox-img-placeholder">Image preview</div>
+        </div>
+        <div class="lightbox-info">
+          <div class="lightbox-category" id="lightboxCategory"></div>
+          <div class="lightbox-title" id="lightboxTitle"></div>
+          <div class="lightbox-desc" id="lightboxDesc"></div>
+          <div class="lightbox-tools" id="lightboxTools"></div>
+          <div class="lightbox-nav">
+            <button id="lightboxPrev">← Prev</button>
+            <button id="lightboxNext">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ── Progress bar
+      window.addEventListener("scroll", () => {
+        const p =
+          (window.scrollY /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100;
+        document.getElementById("progressBar").style.width = p + "%";
+      });
+
+      // ── Mobile menu
+      const menuBtn = document.getElementById("menuBtn");
+      const sidebar = document.getElementById("sidebar");
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtn.textContent = sidebar.classList.contains("open") ? "✕" : "☰";
+      });
+
+      // ── Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+
+      document
+        .querySelectorAll(".category-section")
+        .forEach((el) => observer.observe(el));
+
+      // ── Filter
+      document.querySelectorAll(".filter-list button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-list button")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const filter = btn.dataset.filter;
+          document.querySelectorAll(".category-section").forEach((section) => {
+            if (filter === "all" || section.dataset.category === filter) {
+              section.style.display = "";
+            } else {
+              section.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // ── Lightbox data
+      const pieces = [
+        {
+          title: "Ability to Say — Case for Support",
+          category: "Nonprofit & Brand",
+          desc: "A fully realized nonprofit concept Madison founded and designed from scratch. The Case for Support document covers mission, programming, donor tiers, data visualization, and brand identity — demonstrating the full range of nonprofit communications and development skills.",
+          tools: [
+            "Nonprofit Development",
+            "Adobe InDesign",
+            "Brand Identity",
+            "Donor Communications",
+            "Grant Writing",
+          ],
+          src: "images/ats_thumbnail.png",
+          href: "Ability_to_Say_Case_for_Support.pdf",
+        },
+        {
+          title: "Brand Kit — Riverpark Center",
+          category: "Nonprofit & Brand",
+          desc: "Complete brand kit including color palette, typography, and logo usage guidelines for Riverpark Center.",
+          tools: ["Adobe Illustrator", "Brand Design", "Typography"],
+          src: "images/brand_kit_riverpark_center.png",
+        },
+        {
+          title: "Logo Commission — G. Cobb",
+          category: "Nonprofit & Brand",
+          desc: "Freelance commission logo designed through the full client process — from brief to final delivery. High-quality vector output in Adobe Illustrator.",
+          tools: ["Adobe Illustrator", "Freelance", "Logo Design"],
+          src: "images/g_cobb_logo_commission.png",
+        },
+        {
+          title: "KWOA Newsletter — Fall 2024",
+          category: "Print & Editorial",
+          desc: "Front cover design for the Kentucky Woodlands newsletter, Fall 2024 edition. Designed for print distribution.",
+          tools: ["Adobe InDesign", "Newsletter Design", "Print"],
+          src: "images/kwoa_newsletter_cover.png",
+        },
+        {
+          title: "E-Blast Design",
+          category: "Print & Editorial",
+          desc: "Email marketing design produced for subscriber outreach.",
+          tools: ["Email Marketing", "Digital Design", "Canva"],
+          src: "images/eblast.png",
+        },
+        {
+          title: "Print Collateral",
+          category: "Print & Editorial",
+          desc: "Print design collateral produced for departmental use.",
+          tools: ["Adobe InDesign", "Print Design"],
+          src: "images/wind_product.jpg",
+        },
+        {
+          title: "Print Collateral II",
+          category: "Print & Editorial",
+          desc: "Additional print design collateral.",
+          tools: ["Adobe InDesign", "Print Design"],
+          src: "images/wind_logo.jpg",
+        },
+        {
+          title: "New Housing Starts — Infographic",
+          category: "Print & Editorial",
+          desc: "Dual infographic visualizing New Housing Starts data. Demonstrates data storytelling and design skills.",
+          tools: ["Data Visualization", "Infographic", "Adobe Illustrator"],
+          src: "images/two_infographic.png",
+        },
+        {
+          title: "Forestry 101 — Thumbnail I",
+          category: "Social & Digital",
+          desc: "YouTube thumbnail produced for the Forestry 101 series at the Department of Forestry & Natural Resources, University of Kentucky.",
+          tools: ["YouTube", "Canva", "Multimedia Marketing"],
+          src: "images/forestry101_1.png",
+        },
+        {
+          title: "Forestry 101 — Thumbnail II",
+          category: "Social & Digital",
+          desc: "Series thumbnail II.",
+          tools: ["YouTube", "Canva", "Multimedia Marketing"],
+          src: "images/forestry101_1.png",
+        },
+        {
+          title: "Forestry 101 — Thumbnail III",
+          category: "Social & Digital",
+          desc: "Series thumbnail III.",
+          tools: ["YouTube", "Canva", "Multimedia Marketing"],
+          src: "images/forestry101_4.png",
+        },
+        {
+          title: "Forestry 101 — Thumbnail IV",
+          category: "Social & Digital",
+          desc: "Series thumbnail IV.",
+          tools: ["YouTube", "Canva", "Multimedia Marketing"],
+          src: "images/forestry101_6.png",
+        },
+        {
+          title: "Water Content — YouTube I",
+          category: "Social & Digital",
+          desc: "YouTube thumbnail for water/watershed content series.",
+          tools: ["YouTube", "Digital Design", "Canva"],
+          src: "images/yt_water_content_1.png",
+        },
+        {
+          title: "Water Content — YouTube II",
+          category: "Social & Digital",
+          desc: "Series thumbnail II.",
+          tools: ["YouTube", "Digital Design", "Canva"],
+          src: "images/yt_water_content_2.png",
+        },
+        {
+          title: "Water Content — YouTube III",
+          category: "Social & Digital",
+          desc: "Series thumbnail III.",
+          tools: ["YouTube", "Digital Design", "Canva"],
+          src: "images/yt_water_content_6.png",
+        },
+        {
+          title: "Invasive Plants — Children's Education",
+          category: "Illustration",
+          desc: "Child-friendly educational graphic of an invasive plant species created for childhood environmental education programming.",
+          tools: ["Adobe Illustrator", "SVG", "Illustration", "Education"],
+          src: "images/invasive_plant.svg",
+        },
+        {
+          title: "Bradford Pear Tree Character",
+          category: "Illustration",
+          desc: "Character design for the Bradford Pear Tree — part of the invasive species education series.",
+          tools: ["Adobe Illustrator", "Character Design", "Education"],
+          src: "images/bradford_pear_tree.png",
+        },
+        {
+          title: "Kudzu — Invasive Species Graphic",
+          category: "Illustration",
+          desc: "Illustrated kudzu character for invasive species education series.",
+          tools: ["Adobe Illustrator", "Illustration", "Education"],
+          src: "images/kudzu.png",
+        },
+        {
+          title: "Bush Honeysuckle",
+          category: "Illustration",
+          desc: "Illustrated bush honeysuckle character for the invasive species education series.",
+          tools: ["Adobe Illustrator", "Illustration", "Education"],
+          src: "images/bush_honeysuckle.png",
+        },
+        {
+          title: "Holiday Social Post I",
+          category: "Social & Digital",
+          desc: "Square-format holiday social media post designed for departmental channels.",
+          tools: ["Canva", "Social Media", "Content Design"],
+          src: "images/holiday_posts_1.png",
+        },
+        {
+          title: "Holiday Social Post II",
+          category: "Social & Digital",
+          desc: "Second holiday social media post in the series.",
+          tools: ["Canva", "Social Media", "Content Design"],
+          src: "images/holiday_posts_2.png",
+        },
+        {
+          title: "Research Timeline",
+          category: "Research & Data",
+          desc: "Visual timeline documenting the research process for the single-parent families arts grant project.",
+          tools: ["Data Design", "Research", "Visualization"],
+          src: "images/tcs_timeline.png",
+        },
+        {
+          title: "Condensed Research Timeline",
+          category: "Research & Data",
+          desc: "Condensed version of the research timeline for summary presentations.",
+          tools: ["Data Design", "Research", "Visualization"],
+          src: "images/tcs_condensed_timeline.png",
+        },
+        {
+          title: "Grant Research Application",
+          category: "Research & Data",
+          desc: "The original grant research application submitted for funding to investigate single-parent family representation in arts organizations.",
+          tools: ["Grant Writing", "Nonprofit Research", "Arts Administration"],
+          src: "images/gra_thumbnail.png",
+          href: "Research_Application.pdf",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      function openLightbox(index) {
+        currentIndex = index;
+        const p = pieces[index];
+        document.getElementById("lightboxCategory").textContent = p.category;
+        document.getElementById("lightboxTitle").textContent = p.title;
+        document.getElementById("lightboxDesc").textContent = p.desc;
+
+        const toolsEl = document.getElementById("lightboxTools");
+        toolsEl.innerHTML = p.tools.map((t) => `<span>${t}</span>`).join("");
+
+        // Show PDF link button if href exists
+        const existingLink = document.getElementById("lightboxDocLink");
+        if (existingLink) existingLink.remove();
+        if (p.href) {
+          const link = document.createElement("a");
+          link.id = "lightboxDocLink";
+          link.href = p.href;
+          link.target = "_blank";
+          link.textContent = "View Full Document →";
+          link.style.cssText = `
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #c9a99a;
+        text-decoration: none;
+        border-bottom: 1px solid #c9a99a;
+        padding-bottom: 3px;
+        transition: color 0.3s, border-color 0.3s;
+      `;
+          link.onmouseover = () => {
+            link.style.color = "#f7f3ee";
+            link.style.borderColor = "#f7f3ee";
+          };
+          link.onmouseout = () => {
+            link.style.color = "#c9a99a";
+            link.style.borderColor = "#c9a99a";
+          };
+          // Insert before the nav buttons
+          document.getElementById("lightboxTools").after(link);
+        }
+
+        const wrap = document.getElementById("lightboxImgWrap");
+        if (p.src) {
+          wrap.innerHTML = `<img src="${p.src}" alt="${p.title}" />`;
+        } else {
+          wrap.innerHTML = `<div class="lightbox-img-placeholder">${p.title}</div>`;
+        }
+
+        document.getElementById("lightbox").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".card").forEach((card) => {
+        card.addEventListener("click", () => {
+          openLightbox(parseInt(card.dataset.index));
+        });
+      });
+
+      document
+        .getElementById("lightboxClose")
+        .addEventListener("click", closeLightbox);
+
+      document.getElementById("lightbox").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("lightbox")) closeLightbox();
+      });
+
+      document.getElementById("lightboxPrev").addEventListener("click", () => {
+        openLightbox((currentIndex - 1 + pieces.length) % pieces.length);
+      });
+
+      document.getElementById("lightboxNext").addEventListener("click", () => {
+        openLightbox((currentIndex + 1) % pieces.length);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft")
+          openLightbox((currentIndex - 1 + pieces.length) % pieces.length);
+        if (e.key === "ArrowRight")
+          openLightbox((currentIndex + 1) % pieces.length);
+      });
+    </script>
+  </body>
+</html>
